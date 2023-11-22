@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+}
+
+.conteudo{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.menu{
+
+}
+
+.agenda{
+    width: 80%;
+}
+
+table {
+    width: 100%;
+}
