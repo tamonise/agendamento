@@ -16,6 +16,11 @@ body {
     width: 80%;
 }
 
-table {
+/* table {
     width: 100%;
+    border: 1px solid black;
+} */
+
+th {
+    border-right: 1px solid black;
 }
