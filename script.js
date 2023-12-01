@@ -52,6 +52,10 @@ function preenchimentoCalendario() {
                 diaSemana.innerText =  ultimoIndexDias;
                 componenteSemana.append(diaSemana);
                 ultimoIndexDias ++;
+
+                if(ultimoIndexDias == 31) {
+                    break;
+                }
             }               
         
        objetoSemanas.append(componenteSemana);
