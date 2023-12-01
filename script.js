@@ -16,26 +16,49 @@ function getCurrentDayOfMounth() {
 }
 
 function calculateTotalWeeksOfMounth() {
-    return  parseInt(daysInMonth(month, year) / 7);
+    return  (daysInMonth(month, year) / 7);
 }
+
+// function preenchimentoCalendario() {
+//     let objetoSemanas = document.querySelector(".semanas");
+//     let ultimoIndexDias = 0;
+//     for (let indexSemana = 0; indexSemana < calculateTotalWeeksOfMounth(); indexSemana++) {
+//         var componenteSemana = document.createElement("tr");
+//         for (let index = 0; index < 7; index++) {
+//             var diaSemana = document.createElement("td");
+            
+//             diaSemana.innerText = ultimoIndexDias >= 7 ? ultimoIndexDias + index  : index + 1;
+//             componenteSemana.append(diaSemana);
+
+//             if(index == 6) {
+//                 ultimoIndexDias = 7 * indexSemana;
+//             }
+//         }
+//         objetoSemanas.append(componenteSemana);
+//     }
+// }
 
 function preenchimentoCalendario() {
     let objetoSemanas = document.querySelector(".semanas");
-    let ultimoIndexDias = 0;
+    let ultimoIndexDias = 1;
+    
     for (let indexSemana = 0; indexSemana < calculateTotalWeeksOfMounth(); indexSemana++) {
         var componenteSemana = document.createElement("tr");
-        for (let index = 0; index < 7; index++) {
-            var diaSemana = document.createElement("td");
-            
-            diaSemana.innerText = ultimoIndexDias >= 7 ? ultimoIndexDias + index  : index + 1;
-            componenteSemana.append(diaSemana);
+           
+       
+            for (let index = 0; index < 7; index++) {
 
-            if(index == 6) {
-                ultimoIndexDias = 7 * indexSemana;
-            }
-        }
-        objetoSemanas.append(componenteSemana);
+                var diaSemana = document.createElement("td");
+                diaSemana.innerText =  ultimoIndexDias;
+                componenteSemana.append(diaSemana);
+                ultimoIndexDias ++;
+            }               
+        
+       objetoSemanas.append(componenteSemana);
     }
+    
 }
 
 preenchimentoCalendario();
+
+
