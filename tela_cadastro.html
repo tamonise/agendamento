@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete seus dados</title>
+    <link rel="stylesheet" href="style_tela_cadastro.css">
+</head>
+<body>
+    <div class="container">
+        <form action="">
+          <div class="row">
+            <div class="col-25">
+              <label for="fname">Nome:</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="fname" name="nome_completo" placeholder="Seu nome completo">
+            </div>
+            <div class="col-25">
+              <label for="opcao">Tipo de atendimento</label>
+            </div>
+            <div class="col-75">               
+                <select id="opcao" name="opcao">
+                    <option value="retorno">Retorno</option>
+                    <option value="primeira_consulta">Primeira consulta</option>
+                    <option value="check-up">Check-up</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="subject">Observações:</label>
+            </div>
+            <div class="col-75">
+              <textarea id="subject" name="subject" placeholder="Compartilhe suas observações!" style="height:200px"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <input type="submit" value="Submit">
+          </div>
+        </form>
+      </div> 
+
+</body>
+</html>
