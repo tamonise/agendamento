@@ -25,7 +25,7 @@ function criarComponenteBoxDiaMes(valor, mostrarTexto) {
     var divBoxDiaMes = document.createElement('div');
     var campoTextoDia = document.createElement('p');
     divBoxDiaMes.classList.add('boxDiaMes');
-    campoTextoDia.innerText = !mostrarTexto ? "" : (valor) - semanaAtual();
+    campoTextoDia.innerText = !mostrarTexto ? "" : (valor);
     divBoxDiaMes.append(campoTextoDia);
     if(mostrarTexto) {
         divBoxDiaMes.addEventListener("click", function(event) {
@@ -37,7 +37,7 @@ function criarComponenteBoxDiaMes(valor, mostrarTexto) {
 
 function preenchimentoCalendario() {
     
-    for (let indexDiasMes = 0; indexDiasMes < diasDoMes(mes, ano) + semanaAtual() + 1; indexDiasMes++) {
+    for (let indexDiasMes = 0; indexDiasMes < diasDoMes(mes, ano) + semanaAtual(); indexDiasMes++) {
         if(indexDiasMes == 0 || (indexDiasMes) % 7 == 0) {
             var objetoSemanaMes = document.createElement('div');
             objetoSemanaMes.classList.add('semanasMes');
