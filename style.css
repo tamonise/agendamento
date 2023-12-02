@@ -2,21 +2,58 @@ body {
     margin: 0;
 }
 
-.conteudo{
+.conteudo {
     height: 100vh;
     display: flex;
     justify-content: center;
 }
 
-/* .menu{
-
-} */
-
-.agenda{
-    width: 80%;
+.diasSemana {
+    display: flex;
+    justify-content: space-around;
 }
 
-table {
-    width: 100%;
-    border: 1px solid black;
+.agenda {
+    width: 80%;
+    margin: 10px;
+}
+
+.boxDiaSemana {
+    border-top: 1px solid;
+    width: -webkit-fill-available;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    display: flex;
+    justify-content: center;
+    background-color: lightgrey;
+}
+
+.boxDiaSemana p {
+    font-weight: bold;
+    font-size: medium;
+    color: blue;
+}
+
+.boxDiaSemanaUltimo {
+    border-right: 1px solid;
+}
+
+.boxDiaMes {
+    border-top: 1px solid;
+    width: -webkit-fill-available;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    display: flex;
+    justify-content: center;
+    background-color: lightgrey;
+}
+
+.diasMes {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.semanasMes {
+    display: flex;
 }

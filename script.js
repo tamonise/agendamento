@@ -1,68 +1,53 @@
 let date = new Date();
-let year = date.getFullYear();
-let month = date.getMonth() + 1;
+let ano = date.getFullYear();
+let mes = date.getMonth() + 1;
+var objetoDivDiasMes = document.querySelector('.diasMes');
 
-function daysInMonth(month, year) {
-    return new Date(year, month, 0).getDate();
+
+function diasDoMes(mes, ano) {
+    return new Date(ano, mes, 0).getDate();
 }
 
 // 0 - 6
-function getCurrentWeekDay() {
+function semanaAtual() {
    return date.getDay();
 }
 
-function getCurrentDayOfMounth() {
+function diaAtualDoMes() {
     return date.getDate();
 }
 
-function calculateTotalWeeksOfMounth() {
-    return  (daysInMonth(month, year) / 7);
+function clickBoxDia(event, diaClick) {
+    alert(diaClick);
 }
 
-// function preenchimentoCalendario() {
-//     let objetoSemanas = document.querySelector(".semanas");
-//     let ultimoIndexDias = 0;
-//     for (let indexSemana = 0; indexSemana < calculateTotalWeeksOfMounth(); indexSemana++) {
-//         var componenteSemana = document.createElement("tr");
-//         for (let index = 0; index < 7; index++) {
-//             var diaSemana = document.createElement("td");
-            
-//             diaSemana.innerText = ultimoIndexDias >= 7 ? ultimoIndexDias + index  : index + 1;
-//             componenteSemana.append(diaSemana);
-
-//             if(index == 6) {
-//                 ultimoIndexDias = 7 * indexSemana;
-//             }
-//         }
-//         objetoSemanas.append(componenteSemana);
-//     }
-// }
+function criarComponenteBoxDiaMes(valor, mostrarTexto) {
+    var divBoxDiaMes = document.createElement('div');
+    var campoTextoDia = document.createElement('p');
+    divBoxDiaMes.classList.add('boxDiaMes');
+    campoTextoDia.innerText = !mostrarTexto ? "" : (valor) - semanaAtual();
+    divBoxDiaMes.append(campoTextoDia);
+    if(mostrarTexto) {
+        divBoxDiaMes.addEventListener("click", function(event) {
+            clickBoxDia(event, (valor) - semanaAtual());
+        });
+    }
+    return divBoxDiaMes;
+}
 
 function preenchimentoCalendario() {
-    let objetoSemanas = document.querySelector(".semanas");
-    let ultimoIndexDias = 1;
     
-    for (let indexSemana = 0; indexSemana < calculateTotalWeeksOfMounth(); indexSemana++) {
-        var componenteSemana = document.createElement("tr");
-           
-       
-            for (let index = 0; index < 7; index++) {
-
-                var diaSemana = document.createElement("td");
-                diaSemana.innerText =  ultimoIndexDias;
-                componenteSemana.append(diaSemana);
-                ultimoIndexDias ++;
-
-                if(ultimoIndexDias == 31) {
-                    break;
-                }
-            }               
+    for (let indexDiasMes = 0; indexDiasMes < diasDoMes(mes, ano) + semanaAtual() + 1; indexDiasMes++) {
+        if(indexDiasMes == 0 || (indexDiasMes) % 7 == 0) {
+            var objetoSemanaMes = document.createElement('div');
+            objetoSemanaMes.classList.add('semanasMes');
+        }
+        objetoSemanaMes.append(criarComponenteBoxDiaMes(indexDiasMes, indexDiasMes > semanaAtual()));
         
-       objetoSemanas.append(componenteSemana);
-    }
+        objetoDivDiasMes.append(objetoSemanaMes);
     
+    }
+
 }
 
 preenchimentoCalendario();
-
-
