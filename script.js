@@ -1,53 +1,166 @@
 let date = new Date();
 let ano = date.getFullYear();
 let mes = date.getMonth() + 1;
-var objetoDivDiasMes = document.querySelector('.diasMes');
+let objetoDivDiasMes = document.querySelector('.diasMes');
+let objetoModal = document.querySelector('.modal');
+let objetoConteudoModal = document.querySelector('.conteudoModal');
+let diaClick = 0;
+let agendamentos = [];
 
 
 function diasDoMes(mes, ano) {
     return new Date(ano, mes, 0).getDate();
 }
 
-// 0 - 6
-function semanaAtual() {
-   return date.getDay();
+function trocarData() {
+    let inputMes = document.querySelector('#mesInput').value;
+    let inputAno = document.querySelector('#anoInput').value;
+    if(inputMes > 12 || inputMes < 1) {
+        alert("Mes deve ser menor que 12 e maior que 1");
+    } else if(inputAno < 1970) {
+        alert("Mes deve ser maior que 1970");
+    } else {
+        date = new Date(String(inputAno + " " + inputMes + " 1"));
+        mes = date.getMonth() + 1;
+        ano = date.getFullYear();
+        objetoDivDiasMes.innerHTML = '';
+        preenchimentoCalendario();
+    }
 }
 
-function diaAtualDoMes() {
-    return date.getDate();
+function diaAtualMes(mes, ano, dia) {
+    let dataString = String(ano + " " + mes + " " + dia);
+    return new Date(dataString).getDay();
 }
 
-function clickBoxDia(event, diaClick) {
-    alert(diaClick);
+function fecharModal() {
+    objetoConteudoModal.innerHTML = '';
+    objetoModal.style.display = "none";
+
 }
 
-function criarComponenteBoxDiaMes(valor, mostrarTexto) {
+function clickBoxDia(event, diaClickBox) {
+    objetoModal.style.display = "block";
+    objetoConteudoModal.innerHTML = '';
+    listarAgendamentos(diaClickBox);
+}
+
+function criarComponenteListaModal(titulo, hora, index) {
+     let objetoListaModal = document.createElement('li');
+     let objetoListaItem = document.createElement('div');
+     let objetoTitulo = document.createElement('p');
+     let objetoHora = document.createElement('p');
+     let objetoBotaoRemover = document.createElement('button');
+     objetoBotaoRemover.innerText = 'Remover'
+     objetoBotaoRemover.addEventListener("click", (event) => {
+        agendamentos.splice(index, 1);
+        objetoConteudoModal.innerHTML = '';
+        listarAgendamentos(diaClick);
+        window.localStorage.setItem("agendamentos", JSON.stringify(agendamentos));
+     });
+     objetoListaItem.classList.add('listaItem');
+     objetoTitulo.innerText = titulo;
+     objetoHora = hora;
+     objetoListaItem.append(objetoTitulo);
+     objetoListaItem.append(objetoHora);
+     objetoListaItem.append(objetoBotaoRemover);
+     objetoListaModal.append(objetoListaItem);
+     return objetoListaModal;
+}
+
+function criarComponenteBoxDiaMes(valor, mostrarTexto, primeiraSemana) {
     var divBoxDiaMes = document.createElement('div');
     var campoTextoDia = document.createElement('p');
+    const diaAtualTexto = (valor - primeiraSemana) + 1;
     divBoxDiaMes.classList.add('boxDiaMes');
-    campoTextoDia.innerText = !mostrarTexto ? "" : (valor);
+    campoTextoDia.innerText = mostrarTexto ? diaAtualTexto : " ";
     divBoxDiaMes.append(campoTextoDia);
     if(mostrarTexto) {
-        divBoxDiaMes.addEventListener("click", function(event) {
-            clickBoxDia(event, (valor) - semanaAtual());
+        divBoxDiaMes.addEventListener("click", (event) => {
+            diaClick = diaAtualTexto;
+            clickBoxDia(event, diaAtualTexto);
         });
     }
     return divBoxDiaMes;
 }
 
+function listarAgendamentos(diaClickBox) {
+    let totalAgendamentosDia = 0;
+    if(agendamentos.length > 0) {
+        let objetoLista = document.createElement('ul');
+        objetoLista.classList.add('listaModal');
+        agendamentos.forEach((valor, index) => {
+            if(valor.data == ano + '-' + mes + '-' + diaClickBox) {
+                objetoLista.append(criarComponenteListaModal(valor.titulo, valor.hora, index));
+                totalAgendamentosDia++;
+            }
+        });
+        if(totalAgendamentosDia == 0) {
+            criarComponenteSemAgendamento();
+        } else {
+            objetoConteudoModal.append(objetoLista);
+        }
+    } else {
+        criarComponenteSemAgendamento();
+    }
+}
+
+function criarComponenteSemAgendamento() {
+    let textoConteudo = document.createElement('p');
+    textoConteudo.classList.add('alinhaTextoCentro');
+    textoConteudo.innerText = "Nenhum agendamento marcado para esse dia."
+    objetoConteudoModal.append(textoConteudo);
+}
+
 function preenchimentoCalendario() {
-    
-    for (let indexDiasMes = 0; indexDiasMes < diasDoMes(mes, ano) + semanaAtual(); indexDiasMes++) {
+    carregarAgendamento();
+    let calculoSemanaPrimeiroDiaMes = diaAtualMes(mes, ano, 1);
+    let calculoSemanaUltimoDiaMes = diaAtualMes(mes, ano, diasDoMes(mes, ano));
+
+    for (let indexDiasMes = 0; indexDiasMes < diasDoMes(mes, ano) + calculoSemanaPrimeiroDiaMes; indexDiasMes++) {
         if(indexDiasMes == 0 || (indexDiasMes) % 7 == 0) {
             var objetoSemanaMes = document.createElement('div');
             objetoSemanaMes.classList.add('semanasMes');
         }
-        objetoSemanaMes.append(criarComponenteBoxDiaMes(indexDiasMes, indexDiasMes > semanaAtual()));
+
         
+        objetoSemanaMes.append(criarComponenteBoxDiaMes(indexDiasMes, calculoSemanaPrimeiroDiaMes <= indexDiasMes, calculoSemanaPrimeiroDiaMes));
+        if(indexDiasMes == (diasDoMes(mes, ano) + calculoSemanaPrimeiroDiaMes) - 1) {
+            for (let index = 0; index <= 5 - calculoSemanaUltimoDiaMes; index++) {
+                objetoSemanaMes.append(criarComponenteBoxDiaMes(indexDiasMes, false, calculoSemanaPrimeiroDiaMes));
+            }
+        }
         objetoDivDiasMes.append(objetoSemanaMes);
-    
+        
+        
     }
 
 }
 
+function cadastraAgendamento() {
+    let inputTitulo = document.querySelector('#tituloInputModal');
+    let inputHora = document.querySelector('#horaInputModal');
+    
+    jsonAgendamento = {
+        titulo: inputTitulo.value,
+        data: ano + '-' + mes + '-' + diaClick,
+        hora: inputHora.value
+    };
+    inputHora.value = '';
+    inputTitulo.value = '';
+    agendamentos.push(jsonAgendamento);
+    window.localStorage.setItem("agendamentos", JSON.stringify(agendamentos));
+    objetoConteudoModal.innerHTML = '';
+    listarAgendamentos(diaClick);
+}
+
+
+function carregarAgendamento() {
+    agendamentos = JSON.parse(localStorage.getItem("agendamentos"));
+    if(agendamentos == null) {
+        agendamentos = [];
+    }
+}
+
 preenchimentoCalendario();
+

@@ -5,7 +5,9 @@ body {
 .conteudo {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .diasSemana {
@@ -56,4 +58,49 @@ body {
 
 .semanasMes {
     display: flex;
+}
+
+.menu {
+    width: -webkit-fill-available;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.menu input {
+    margin-right: 15px;
+    margin-left: 5px;
+}
+
+.modal {
+    background-color: #b2bec1;
+    width: 50%;
+    height: -webkit-fill-available;
+    position: absolute;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border: 1px solid;
+    border-radius: 15px;
+    display: none;
+}
+
+.cabecalhoModal {
+    display: flex;
+    justify-content: end;
+    margin-right: 25px;
+    margin-top: 15px;
+}
+
+.listaItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.btnModalRemover {
+    height: -webkit-fill-available;
+}
+
+.alinhaTextoCentro {
+    text-align: center;
 }
