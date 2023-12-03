@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="style_tela_cadastro.css">
 </head>
 <body>
+    <header>
+        
+    </header>
+
+
     <div class="container">
         <form action="">
           <div class="row">
@@ -15,24 +20,48 @@
             </div>
             <div class="col-75">
               <input type="text" id="fname" name="nome_completo" placeholder="Seu nome completo">
-            </div>
+            </div>                        
+        </div>
+
+        <div class="row">
             <div class="col-25">
-              <label for="opcao">Tipo de atendimento</label>
+              <label for="fname">Endereço:</label>
             </div>
-            <div class="col-75">               
-                <select id="opcao" name="opcao">
-                    <option value="retorno">Retorno</option>
-                    <option value="primeira_consulta">Primeira consulta</option>
-                    <option value="check-up">Check-up</option>
-              </select>
+            <div class="col-75">
+              <input type="text" id="fname" name="endereco" placeholder="Endereço">
+            </div>                        
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+              <label for="fname">Telefone:</label>
             </div>
-          </div>
+            <div class="col-75">
+              <input type="tel" id="fname" name="telefone" placeholder="(DDD) XXXXX-XXXX">
+            </div>                        
+        </div>
+
+        <div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Tipo de atendimento:</label>
+                </div>
+                <div class="col-75">               
+                    <select id="opcao" name="fname">
+                        <option value="retorno">Retorno</option>
+                        <option value="primeira_consulta">Primeira consulta</option>
+                        <option value="check-up">Check-up</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
           <div class="row">
             <div class="col-25">
               <label for="subject">Observações:</label>
             </div>
             <div class="col-75">
-              <textarea id="subject" name="subject" placeholder="Compartilhe suas observações!" style="height:200px"></textarea>
+              <textarea id="subject" name="subject" placeholder="Descreva os seus sintomas" style="height:200px"></textarea>
             </div>
           </div>
           <div class="row">
