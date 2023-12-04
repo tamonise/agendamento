@@ -6,6 +6,8 @@ let objetoModal = document.querySelector('.modal');
 let objetoConteudoModal = document.querySelector('.conteudoModal');
 let diaClick = 0;
 let agendamentos = [];
+let usuarioLogado = {};
+let pacientes = [];
 
 
 function diasDoMes(mes, ano) {
@@ -91,7 +93,7 @@ function listarAgendamentos(diaClickBox) {
         objetoLista.classList.add('listaModal');
         agendamentos.forEach((valor, index) => {
             if(valor.data == ano + '-' + mes + '-' + diaClickBox) {
-                objetoLista.append(criarComponenteListaModal(valor.titulo, valor.hora, index));
+                objetoLista.append(criarComponenteListaModal(valor.paciente, valor.hora, index));
                 totalAgendamentosDia++;
             }
         });
@@ -113,7 +115,9 @@ function criarComponenteSemAgendamento() {
 }
 
 function preenchimentoCalendario() {
+    carregarPacientes()
     carregarAgendamento();
+    popularComboBoxPaciente();
     let calculoSemanaPrimeiroDiaMes = diaAtualMes(mes, ano, 1);
     let calculoSemanaUltimoDiaMes = diaAtualMes(mes, ano, diasDoMes(mes, ano));
 
@@ -138,16 +142,16 @@ function preenchimentoCalendario() {
 }
 
 function cadastraAgendamento() {
-    let inputTitulo = document.querySelector('#tituloInputModal');
+    let inputPaciente = document.querySelector('#pacienteInputModal');
     let inputHora = document.querySelector('#horaInputModal');
     
     jsonAgendamento = {
-        titulo: inputTitulo.value,
+        paciente: inputPaciente.value,
         data: ano + '-' + mes + '-' + diaClick,
         hora: inputHora.value
     };
     inputHora.value = '';
-    inputTitulo.value = '';
+    inputPaciente.value = '';
     agendamentos.push(jsonAgendamento);
     window.localStorage.setItem("agendamentos", JSON.stringify(agendamentos));
     objetoConteudoModal.innerHTML = '';
@@ -160,6 +164,23 @@ function carregarAgendamento() {
     if(agendamentos == null) {
         agendamentos = [];
     }
+}
+
+function carregarPacientes() {
+    pacientes = JSON.parse(localStorage.getItem("pacientes"));
+    if(pacientes == null) {
+        pacientes = [];
+    }
+}
+
+function popularComboBoxPaciente() {
+    let comboBoxPaciente = document.querySelector("#pacienteInputModal");
+    pacientes.forEach(element => {
+        var pacienteItemCombo = document.createElement('option');
+        pacienteItemCombo.value = element.nome;
+        pacienteItemCombo.innerHTML = element.nome;
+        comboBoxPaciente.append(pacienteItemCombo);
+    });
 }
 
 preenchimentoCalendario();

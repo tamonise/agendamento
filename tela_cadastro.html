@@ -15,7 +15,7 @@
               <label for="fname">Nome:</label>
             </div>
             <div class="col-75">
-              <input type="text" id="fname" name="nome_completo" placeholder="Seu nome completo">
+              <input type="text" id="nomeInput" placeholder="Seu nome completo">
             </div>                        
         </div>
 
@@ -24,7 +24,7 @@
               <label for="fname">Endereço:</label>
             </div>
             <div class="col-75">
-              <input type="text" id="fname" name="endereco" placeholder="Endereço">
+              <input type="text" id="enderecoInput" placeholder="Endereço">
             </div>                        
         </div>
 
@@ -33,7 +33,7 @@
               <label for="fname">Telefone:</label>
             </div>
             <div class="col-75">
-              <input type="tel" id="fname" name="telefone" placeholder="(DDD) XXXXX-XXXX">
+              <input type="tel" id="telefoneInput" placeholder="(DDD) XXXXX-XXXX">
             </div>                        
         </div>
 
@@ -43,10 +43,10 @@
                     <label for="fname">Tipo de atendimento:</label>
                 </div>
                 <div class="col-75">               
-                    <select id="opcao" name="fname">
-                        <option value="retorno">Retorno</option>
-                        <option value="primeira_consulta">Primeira consulta</option>
-                        <option value="check-up">Check-up</option>
+                    <select id="inputTipoAtendimento">
+                        <option value="R">Retorno</option>
+                        <option value="PC">Primeira consulta</option>
+                        <option value="C">Check-up</option>
                     </select>
                 </div>
             </div>
@@ -57,14 +57,15 @@
               <label for="subject">Observações:</label>
             </div>
             <div class="col-75">
-              <textarea id="subject" name="subject" placeholder="Descreva os seus sintomas" style="height:200px"></textarea>
+              <textarea id="inputObservacoes" placeholder="Descreva os seus sintomas" style="height:200px"></textarea>
             </div>
           </div>
           <div class="row">
-            <input type="submit" value="Submit">
+            <button type="button" onclick="cadastrarPaciente()"> Cadastrar</button>
           </div>
         </form>
       </div> 
 
+      <script src="cadastro-paciente-script.js"></script>
 </body>
 </html>
