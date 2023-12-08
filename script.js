@@ -183,5 +183,13 @@ function popularComboBoxPaciente() {
     });
 }
 
-preenchimentoCalendario();
+function verificarUsuarioLogado() {
+    usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+    if(usuarioLogado == null) {
+        alert("Efetue o login primeiro");
+        window.location = "tela_login.html";
+    }
+}
 
+verificarUsuarioLogado();
+preenchimentoCalendario();

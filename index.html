@@ -4,26 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamento</title>
+    <link rel="icon" type="image/x-icon" href="/icone.ico">
     <link rel="stylesheet" href="style.css">
 
-
+    <head>
 </head>
 <body>
     <div class="conteudo">
         <div class="menu">
-            <label for="mesInput">Mês</label>
+            <label for="mesInput">Mês </label>
             <input type="number" id="mesInput" name="mes" min="1" max="31" />
-            <label for="anoInput">Ano</label>
+            <label for="anoInput">Ano </label>
             <input type="number" id="anoInput" name="ano" min="1" max="3000" />
             <button type="button" onclick="trocarData()">Buscar</button>
-            <a href="tela_cadastro.html">Cadastrar Paciente</a>
+            
         </div>
         <div class="modal">
             <div class="cabecalhoModal">
-                <button type="button" onclick="fecharModal()">X</button>
+                <button type="button" onclick="fecharModal()">Fechar</button>
             </div>
+            <p>Cadastrar novo agendamento</p>
             <div class="formCadastro">
-                <p>Cadastrar novo agendamento</p>
                 <label for="pacienteInputModal">Paciente</label>
                 <select id="pacienteInputModal"></select>
                 <label for="horaInputModal">Hora</label>
@@ -60,6 +61,7 @@
             <div class="diasMes">
             </div>
         </div>
+        <a href="tela_cadastro.html"><button class="botao">Cadastro Paciente</button></a>
     </div>    
 </body>
 <script src="./script.js"></script>

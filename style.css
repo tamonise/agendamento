@@ -1,10 +1,62 @@
 body {
-    margin: 0;
+    background-image: url("back.gif");
+    background-size:cover;
+
 }
+
+.mesInput{
+    font-weight: 10px;
+}
+
+input{
+    font-family: Poppins-Medium;
+    font-size: 10px;
+    cursor: pointer;
+    color: var(--white-color);
+    line-height: 1.2;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 50px;
+    height: 20px;
+    background-color: white;
+    border-radius: 15px;
+    
+    
+}
+
+button{
+    font-family: sans-serif;
+    font-size: 10px;
+    cursor: pointer;
+    color: var(--white-color);
+    line-height: 1.2;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 120px;
+    height: 35px;
+    background-color: white;
+    border-radius: 15px;
+    opacity: 0.5;
+    transition: all 0.4s;
+    z-index: 9998;
+
+
+}
+
+button:hover {
+    opacity:1;
+}
+
 
 .conteudo {
     height: 100vh;
-    display: flex;
+    display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -16,85 +68,97 @@ body {
 }
 
 .agenda {
-    width: 80%;
-    margin: 10px;
+    width: 70%;
+    height: 60%;
+    margin: 15px;
+    background-color:rgba(255,255,255,0.8);
+    
 }
 
 .boxDiaSemana {
-    border-top: 1px solid;
     width: -webkit-fill-available;
-    border-bottom: 1px solid;
-    border-left: 1px solid;
+    border-style:hidden;
+    border-color: black;
     display: flex;
     justify-content: center;
-    background-color: lightgrey;
-}
+    background-color:rgba(255,255,255,0.8);}
 
 .boxDiaSemana p {
-    font-weight: bold;
-    font-size: medium;
-    color: blue;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style:italic; 
+    font-size: larger;
+    color: black;
 }
 
-.boxDiaSemanaUltimo {
-    border-right: 1px solid;
+a {
+    text-decoration: none; 
+    color: inherit; 
 }
+
 
 .boxDiaMes {
-    border-top: 1px solid;
+
     width: -webkit-fill-available;
-    border-bottom: 1px solid;
-    border-left: 1px solid;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-style: hidden;
+    border-color: black;
     display: flex;
     justify-content: center;
-    background-color: lightgrey;
+    background-color: transparent;
 }
 
 .diasMes {
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction:column;
 }
 
 .semanasMes {
-    display: flex;
+    display:flex;
 }
 
 .menu {
     width: -webkit-fill-available;
-    margin: 10px;
+    margin: 20px;
     display: flex;
     justify-content: center;
 }
 
 .menu input {
-    margin-right: 15px;
-    margin-left: 5px;
+    
+    margin-right: 250px;
+    margin-left: 0px;
 }
 
-.modal {
-    background-color: #b2bec1;
-    width: 50%;
-    height: -webkit-fill-available;
+.modal { 
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    background-image: url(agenda.jpg);
+    background-size:auto;
+    width: 651px;
+    height: 887px;
     position: absolute;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-bottom: auto;
+    margin-top: auto;
     border: 1px solid;
+    border-color: rgb(134, 182, 236);
     border-radius: 15px;
-    display: none;
+    display:none;
+    z-index: 9999;
 }
 
 .cabecalhoModal {
-    display: flex;
-    justify-content: end;
-    margin-right: 25px;
-    margin-top: 15px;
+    display:flex;
+    justify-content:end;
+    margin-right: 1%;
+    margin-top: 13%;
 }
 
 .listaItem {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content:space-around;
+    overflow: auto;
 }
 
 .btnModalRemover {
@@ -102,5 +166,11 @@ body {
 }
 
 .alinhaTextoCentro {
-    text-align: center;
+    text-align:justify;
+}
+
+.formCadastro {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }

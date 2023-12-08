@@ -1,62 +1,85 @@
 
 input[type=text],input[type=tel], select, textarea{
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
+    width: 450px; 
+    padding: 15px;
+    border: 1px transparent;
     border-radius: 4px;
-    box-sizing: border-box;
-    resize: vertical;
+    box-sizing:auto;
+    resize:vertical;
+    overflow: auto; 
+    
   }
-  
+
+  button{
+    font-family: sans-serif;
+    font-size: 50px;
+    cursor: pointer;
+    color:white;
+    line-height: 1.2;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 400px;
+    height: 100px;
+    background-color: rgb(179, 79, 112);
+    border-radius: 15px;
+    opacity: 0.5;
+    transition: all 0.4s;
+    margin-top: 5%;
+    margin-left: 38%;
+    margin-bottom: 5%;
+
+}
+
+button:hover {
+  opacity:1;
+}
 
   label {
-    padding: 12px 12px 12px 0;
+    padding: 12px 12px 12px 12px;
     display: inline-block;
-  }
-  
- 
-  input[type=submit] {
-    background-color: #04AA6D;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    float: right;
+    
+    
   }
   
   .container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
+    border-radius: 15px;
+    background-image: url(BackLogin.jpg);;
+    background-size:cover;
+    
   }
-  
 
   .col-25 {
     float: left;
-    width: 25%;
-    margin-top: 6px;
+    width: 100%;
+    margin-top: 10px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: aliceblue;
+    font-style: italic;
+    font-size: large;
+    margin-left: 37.253%;
+    
   }
-  
 
   .col-75 {
     float: left;
-    width: 75%;
-    margin-top: 6px;
+    width: 150%;
+    margin-top: 10px;
+    margin-left: 37.253%;
   }
   
   .row:after {
     content: "";
-    display: table;
-    clear: both;
+    display:flex;
+    clear:both;
   }
 
-
-  
-
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1000px) {
     .col-25, .col-75, input[type=submit] {
       width: 100%;
       margin-top: 0;
+      
     }
   }

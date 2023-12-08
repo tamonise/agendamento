@@ -1,6 +1,6 @@
 
 :root {
-    --main-color: #ff40ff;
+    --main-color: red;
     --link-color: #666666;
     --text1: #999999;
     --highligth-text: #333333;
@@ -8,6 +8,7 @@
     --white-color: #FFFFFF;
     --point-list: #CCCCCC;
     --line-input: #D9D9D9;
+    
   }
   
   /*
@@ -70,7 +71,7 @@
   .text1 {
     font-family: Poppins-Regular;
     font-size: 15px;
-    color: var(--text1);
+    color: white;
     line-height: 1.5;
   }
   
@@ -118,15 +119,8 @@
     justify-content: center;
     align-items: center;
     padding: 15px;
-    background: var(--white-color);  
+    background-image: url(rlx.jpg);
   }
-  
-  .wrap-login {
-    width: 370px;
-    margin-right: 50px;
-    background: var(--white-color);
-  }
-  
   /*
     Formulário
   */
@@ -139,7 +133,7 @@
     display: block;
     font-family: Poppins-Bold;
     font-size: 39px;
-    color: var(--highligth-text);
+    color: white;
     line-height: 1.2;
     text-align: center;
   }
@@ -157,7 +151,7 @@
   .input-form {
     font-family: Poppins-SemiBold;
     font-size: 18px;
-    color: var(--input-text);
+    color: white;
     line-height: 1.2;
     display: block;
     width: 100%;
@@ -190,7 +184,7 @@
   
   .focus-input-form::after {
     font-family: Poppins-Medium;
-    font-size: 18px;
+    font-size: px;
     color: var(--text1);
     line-height: 1.2;
     content: attr(data-placeholder);
@@ -249,7 +243,7 @@
   }
   
   .login-form-btn:hover  {
-    background-color: var(--highligth-text);
+    background-color: red ;
   }
   
   /*
@@ -262,7 +256,7 @@
       line-height: 1.7;
       color: var(--link-color);
       margin: 0px;
-      transition: all 0.4s;
+      transition: all 0.5s;
   }
   
   a:focus {
@@ -271,7 +265,7 @@
   
   a:hover {
       text-decoration: none;
-    color: var(--highligth-text);
+    color: red;
   }
   
   /*
@@ -294,7 +288,7 @@
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: var(--point-list);
+    background-color: transparent;
     top: 45%;
     transform: translateY(-50%);
     left: 0;
